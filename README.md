@@ -3,19 +3,19 @@
 Welcome to my **Frontend Practice Hub** — a repository where I consistently practice and track my progress in different **frontend technologies**.
 
 ## 🔹 Tech Stacks Covering
-- **HTML** → Structure & semantics
-- **CSS** → Styling, Flexbox, Grid, Responsive Design
-- **JavaScript** → Core concepts, ES6+, DOM, Async JS
-- **React.js** → Components, Hooks, State Management
+- **HTML**
+- **CSS**
+- **SASS**
+- **Tailwind CSS**
+- **JavaScript**
+- **React.js**
 - *(More to be added as I grow!)*
 
 ## 🎯 Goal
 To strengthen my frontend development skills by solving questions, building UI components, and working on mini-projects every day.
 
 ## 📅 Daily Progress
-- Day 1: [HTML Basics](./day01-html-basics)
-- Day 2: [CSS Flexbox Practice](./day02-css-flexbox)
-- Day 3: [JavaScript Functions](./day03-js-functions)
+- Day 1: [SASS Complete Course](./SASS)
 - *(and so on…)*
 
 ## 📌 Why This Repo?
