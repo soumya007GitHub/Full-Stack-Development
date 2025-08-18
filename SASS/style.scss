@@ -1,0 +1,22 @@
+// @mixin name{
+//     color: red;
+//     background-color: yellow;
+// }
+
+// .name{
+//     @include name;
+//     padding: 10px;
+// }
+
+.name{
+    padding: 10px;
+    color: red;
+    background-color: yellow;
+}
+.name1{
+    @extend .name;
+    border: 1px solid blue;
+}
+.tripathy{
+    @extend .name;
+}
