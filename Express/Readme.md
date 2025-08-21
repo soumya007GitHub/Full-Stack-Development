@@ -94,10 +94,128 @@ A **REST API** (**Representational State Transfer Application Programming Interf
 
 ---
 
+## **Using Router for Modular Routes**
+
+You can organize routes using Express Router and export them for use in your main app.
+
+**tasks.router.js**
+```javascript
+const express = require('express');
+const router = express.Router();
+
+router.get('/tasks', (req, res) => {
+  res.send('Get all tasks');
+});
+
+router.post('/tasks', (req, res) => {
+  res.send('Create a new task');
+});
+
+router.put('/tasks/:id', (req, res) => {
+  res.send(`Update task with ID ${req.params.id}`);
+});
+
+router.delete('/tasks/:id', (req, res) => {
+  res.send(`Delete task with ID ${req.params.id}`);
+});
+
+module.exports = router;
+```
+
+**users.router.js**
+```javascript
+const express = require('express');
+const router = express.Router();
+
+router.get('/users', (req, res) => {
+  res.send('Get all users');
+});
+
+router.post('/users', (req, res) => {
+  res.send('Create a new user');
+});
+
+module.exports = router;
+```
+
+---
+
+## **Using `app.use` to Mount Routers**
+
+In your main app file, you can use `app.use` to utilize these routers:
+
+```javascript
+const express = require('express');
+const app = express();
+const tasksRouter = require('./tasks.router');
+const usersRouter = require('./users.router');
+
+app.use('/', tasksRouter);
+app.use('/', usersRouter);
+
+app.listen(3000, () => {
+  console.log('Server running on port 3000');
+});
+```
+
+---
+
+## **Route Parameters, Slugs, and Optional Parameters**
+
+- **Route Parameters (Slugs):**  
+  Used to capture dynamic values from the URL.
+
+```javascript
+app.get('/authors/:name', (req, res) => {
+  res.send(`Author name: ${req.params.name}`);
+});
+```
+Visiting `/authors/peter` will show `Author name: peter`.
+
+- **Optional Parameters:**  
+  Add a `?` after the parameter name.
+
+```javascript
+app.get('/books/:genre?', (req, res) => {
+  if (req.params.genre) {
+    res.send(`Genre: ${req.params.genre}`);
+  } else {
+    res.send('All genres');
+  }
+});
+```
+Visiting `/books/fiction` shows `Genre: fiction`, `/books` shows `All genres`.
+
+---
+
+## **Query Parameters**
+
+- Used to filter or refine data, appear after `?` in the URL.
+
+```javascript
+app.get('/tasks', (req, res) => {
+  const status = req.query.status;
+  res.send(`Tasks with status: ${status}`);
+});
+```
+Visiting `/tasks?status=done` will show `Tasks with status: done`.
+
+---
+
+## **Difference Between Params and Query**
+
+| **Aspect** | **Params** | **Query** |
+|-----------|-----------|-----------|
+| **Definition** | Defines **which resource or category** we want to interact with. | Adds **filters or options** to refine the data. |
+| **Usage** | Part of the **URL path**. | Part of the **URL after `?`**. |
+| **Example** | `/users/123` → Fetch **user 123**. | `/users?limit=10` → Fetch **first 10 users**. |
+
+---
+
 ## **Summary**
 - A **REST API** enables communication between applications over the internet using **HTTP**.
 - It relies on **statelessness**, **uniform interfaces**, **client-server decoupling**, **cacheability**, and **layered architecture**.
 - Common HTTP methods include **GET**, **POST**, **PUT**, **PATCH**, and **DELETE**.
 - URL **params** define **what resource** you want, while **query parameters** define **filters or options**.
-
----
+- Use **Express Router** and `app.use` for modular and maintainable route definitions.
+- Route parameters and queries allow for dynamic and flexible endpoints.

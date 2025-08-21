@@ -1,0 +1,18 @@
+{
+  "name": "express",
+  "version": "1.0.0",
+  "description": "A **REST API** (**Representational State Transfer Application Programming Interface**) is a way for different software applications to communicate with each other over the internet using a set of rules and conventions. It is one of the most widely used architectural styles for building web services.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "express": "^5.1.0"
+  },
+  "dependencies": {
+    "nodemon": "^3.1.10"
+  }
+}
